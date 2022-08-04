@@ -9,6 +9,7 @@ class TicTacToe:
     def print_board(self):
         for row in [self.board[i*3:(i+1)*3] for i in range(3)]:
             print('| '+' | '.join(row)+ ' |')
+
     @staticmethod
     def print_board_nums():
         number_board = [[str(i) for i in range(j*3, (j+1)*3)] for j in range(3)]
@@ -24,7 +25,7 @@ class TicTacToe:
 
     def make_move(self, square, letter):
         if self.board[square] == ' ':
-            self.board[square] == letter
+            self.board[square] = letter
             if self.winner(square, letter):
                 self.current_winner = letter
             return True
@@ -46,6 +47,8 @@ class TicTacToe:
             if all([letter == spot for spot in diag1]) or all(letter == spot for spot in diag2):
                 return True
         return False
+
+
 def play(game, x_player, o_player, print_game = True):
     if print_game:
         game.print_board_nums()
